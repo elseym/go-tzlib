@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 
-	tzlib "github.com/elseym/go-tzlib"
+	"github.com/elseym/go-tzlib"
 )
 
 // JSONFile imports from a json file from the filesystem

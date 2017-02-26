@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 
-	tzlib "github.com/elseym/go-tzlib"
+	"github.com/elseym/go-tzlib"
 )
 
 // JSONFile exports to a json file to the filesystem

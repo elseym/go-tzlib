@@ -53,7 +53,7 @@ func (l *Tzlib) AddNewTimezone(utc string) *Timezone {
 func (l *Tzlib) AddTimezone(z *Timezone) *Timezone {
 	z.parent = l
 
-	l.offsets[z.Offset] = sort.Search(len(l.Timezones), func(i int) bool { return z.Offset < l.Timezones[i].Offset })
+	l.offsets[z.Offset] = sort.Search(len(l.Timezones), l.tzSearcher(z.Offset))
 
 	l.Timezones = append(l.Timezones, z)
 	copy(l.Timezones[l.offsets[z.Offset]+1:], l.Timezones[l.offsets[z.Offset]:])
