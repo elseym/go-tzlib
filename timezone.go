@@ -9,10 +9,10 @@ const timezonesCap = 40
 
 // Timezone holds information about Offset and Countries
 type Timezone struct {
-	Utc       string     `json:"utc"`
-	Offset    int        `json:"offset"`
-	Countries []*Country `json:"countries"`
-	Location  *time.Location
+	Utc       string         `json:"utc"`
+	Offset    int            `json:"offset"`
+	Countries []*Country     `json:"countries"`
+	Location  *time.Location `json:"-"`
 	parent    *Tzlib
 }
 
