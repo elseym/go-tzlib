@@ -68,13 +68,25 @@ func (l *Tzlib) Export(e Exporter) error {
 }
 
 // WhereWasIt returns the timezone where t most recently passed
-func (l Tzlib) WhereWasIt(t time.Time) (z *Timezone, err error) {
-	return l.where(after, t)
+func (l Tzlib) WhereWasIt(t time.Time) (z Timezone, err error) {
+	return l.wherederef(after, t)
 }
 
 // WhereWillItBe returns the timezone t will pass next
-func (l Tzlib) WhereWillItBe(t time.Time) (z *Timezone, err error) {
-	return l.where(before, t)
+func (l Tzlib) WhereWillItBe(t time.Time) (z Timezone, err error) {
+	return l.wherederef(before, t)
+}
+
+// wherederef oh where
+func (l Tzlib) wherederef(d int, t time.Time) (z Timezone, err error) {
+	var zp *Timezone
+
+	zp, err = l.where(d, t)
+	if zp != nil {
+		z = *zp
+	}
+
+	return
 }
 
 // where oh where
