@@ -53,5 +53,10 @@ func (z Timezone) Localtime() (t time.Time) {
 
 // Until returns the duration until t is passed in this timezone
 func (z Timezone) Until(t time.Time) (d time.Duration) {
-	return z.Localtime().Sub(t)
+	l := z.Localtime()
+	h := (t.Hour() - l.Hour()) * 60 * 60
+	m := (t.Minute() - l.Minute()) * 60
+	s := t.Second() - l.Second()
+
+	return time.Duration((h + m + s) * int(time.Second))
 }
